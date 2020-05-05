@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<section class="jumbotron text-center">
+		<div class="container">
+			<h1>Produit détaillé</h1>
+			<p class="lead text-muted"></p>
+
+		</div>
+	</section>
+	<div class="container border rounded">
+		<div class="row">
+			<div class="col-md-6">
+				<h4 class="">
+					{{product.name}}
+				</h4>
+				<div class="">
+					<u>détails</u>:
+					{{product.description}}
+				</div>
+				<div class="">
+					<u>prix</u>:
+					{{product.price}}
+					euros
+				</div>
+				<hr/>
+				<div class=" ">
+					<button class="btn btn-secondary ">
+						<a href="{{path('checkout',{id:product.id})}}">Acheter</a>
+					</button>
+				</div>
+
+			</div>
+			<div class="col-md-6">
+				{% if product.image %}
+					<img class="card-img-top" src="/uploads/images/products/{{ product.image }}"/>
+				{% else %}
+					<img class="card-img-top" src="https://via.placeholder.com/350x150"/>
+
+				{% endif %}
+			</div>
+		</div>
+
+	</div>
+{% endblock %}
+{% block stylesheets %}{% endblock %}

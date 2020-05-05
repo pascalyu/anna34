@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+
+		<link rel="stylesheet" href="{{ asset('theme/css/bootstrap4.4.1.min.css')}}"/> {% block stylesheets %}{% endblock %}
+
+		</head>
+		<body>
+			{{include('header.html.twig')}}
+			{% block body %}{% endblock %}
+			{% block javascripts %}{% endblock %}
+
+			<script src="{{ asset('theme/js/jquery.min.js')}}"></script>
+			<script src="{{ asset('theme/js/bootstrap.min.js')}}"></script>
+
+		</body>
+	</html>

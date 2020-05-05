@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello OrderController!
+{% endblock %}
+
+{% block body %}
+	<style>
+		.StripeElement {
+			box-sizing: border-box;
+
+			height: 40px;
+
+			padding: 10px 12px;
+
+			border: 1px solid transparent;
+			border-radius: 4px;
+			background-color: white;
+
+			box-shadow: 0 1px 3px 0 #e6ebf1;
+			-webkit-transition: box-shadow 150ms ease;
+			transition: box-shadow 150ms ease;
+		}
+
+		.StripeElement--focus {
+			box-shadow: 0 1px 3px 0 #cfd7df;
+		}
+
+		.StripeElement--invalid {
+			border-color: #fa755a;
+		}
+
+		.StripeElement--webkit-autofill {
+			background-color: #fefde5 !important;
+		}
+	</style>
+	<section class="jumbotron text-center">
+		<div class="container">
+			<h1>Paiment de
+				{{product.price}}
+				euros</h1>
+			<p class="lead text-muted"></p>
+
+		</div>
+	</section>
+	<div class="wrapper container">
+
+
+		<form id="payment-form">
+			<di class="m-3">
+				{% if app.user %}
+					<input id="user-name" value="{{app.user.name}}"/>
+				{% else %}
+					<input id="user-name" value=""/>
+				{% endif %}
+
+			</di>
+			<div id="card-element" class="p-2 mb-5"><!--Stripe.js injects the Card Element--></div>
+			<button id="submit" class="btn btn-primary " data-secret="{{ intent.client_secret }}">
+				<div class="spinner hidden" id="spinner"></div>
+				<span id="button-text">Pay</span>
+			</button>
+			<p id="card-errors" role="alert"></p>
+			<p class="result-message hidden">
+				Payment succeeded, see the result in your
+				<a href="" target="_blank">Stripe dashboard.</a>
+				Refresh the page to pay again.
+			</p>
+		</form>
+
+	</div>
+	<script src="https://js.stripe.com/v3/"></script>
+
+	<script src="{{ asset('theme/js/owpatowpatyiwtsaw.js')}}"></script>
+
+
+{% endblock %}
